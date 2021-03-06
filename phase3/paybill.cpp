@@ -65,12 +65,12 @@ void payBill::paybill(vector<string> lType,login session){
     
     
     cout <<"Account Name: "<<endl; 
-    name = lType[session.getSessionCounter()];
+    name = lType[session.updateSessionCounter()];
     for(int i=0;i<adminAccounts.size();i++){
         if (name == adminAccounts[i].getAccountName()){
             currentAccount =i;
             UserChecker =true; 
-            session.updateSessionCounter();
+         
         }
     }
     if(UserChecker ==false){exit(1);}
@@ -80,8 +80,7 @@ void payBill::paybill(vector<string> lType,login session){
     setAccountName(name);
        //ask for account Number
     cout <<"Account Number: "; 
-    num =stoi(lType[session.getSessionCounter()]);
-    session.updateSessionCounter();
+    num =stoi(lType[session.updateSessionCounter()]);
     if(adminAccounts[currentAccount].getAccountNumber()!= num){exit(1);}
    
     //cin >>num;
@@ -94,8 +93,8 @@ void payBill::paybill(vector<string> lType,login session){
     cout <<"Type 'EC' for The Bright Light Electric Company" <<endl;
     cout <<"Type 'CQ' for Credit Card Company Q"<<endl;
     cout <<"Type 'FI' Fast Internet, Inc."<<endl; 
-    company = lType[session.getSessionCounter()];
-    session.updateSessionCounter();
+    company = lType[session.updateSessionCounter()];
+   
     //cin >>company;
     if(company == "EC" || company == "CQ" || company == "FI"){
         setCompany(company);
@@ -106,8 +105,8 @@ void payBill::paybill(vector<string> lType,login session){
 
 
         cout <<"Amount: "<<endl; 
-        amount =stof(lType[session.getSessionCounter()]);
-        session.updateSessionCounter();
+        amount =stof(lType[session.updateSessionCounter()]);
+  
         //cin >>amount;
          //check account balance is greater than 0.00 after paying
          if((adminAccounts[currentAccount].getBalance()-amount)>=0.00){
@@ -129,7 +128,7 @@ void payBill::paybill(vector<string> lType,login session){
     cout <<"Account Number: "<<endl; 
     
 
-    num =stoi(lType[session.getSessionCounter()]);
+    num =stoi(lType[session.updateSessionCounter()]);
     for(int i=0;i<standardAccounts.size();i++){
         if (num == standardAccounts[i].getAccountNumber()){
             currentAccount =i;
@@ -141,7 +140,7 @@ void payBill::paybill(vector<string> lType,login session){
     //cin >>num;
     //there will be a check if there is the account number in db
     setAccountNumber(num);
-    session.updateSessionCounter();
+  
 
     // ask for Company To whom will be paid
     //if incorrect input exit
@@ -150,12 +149,12 @@ void payBill::paybill(vector<string> lType,login session){
     cout <<"Type 'CQ' for Credit Card Company Q"<<endl;
     cout <<"Type 'FI' Fast Internet, Inc."<<endl; 
 
-    company = lType[session.getSessionCounter()];
-    cout <<company<<endl;
+    company = lType[session.updateSessionCounter()];
+ 
     //cin >>company;
     if(company == "EC" || company == "CQ" || company == "FI"){
         setCompany(company);
-        session.updateSessionCounter();
+      
         
         }else{
             exit(1);
@@ -166,12 +165,12 @@ void payBill::paybill(vector<string> lType,login session){
     
         //if payment is more than $2000.00 exit
         cout <<"Amount: "<<endl;; 
-        amount =stof(lType[session.getSessionCounter()]);
+        amount =stof(lType[session.updateSessionCounter()]);
         //cin >>amount;
         //account balance is greater than 0.00 after paying
         if(amount <=2000.00 && (standardAccounts[currentAccount].getBalance()-amount)>=0.00){
             setAmount(amount);
-            session.updateSessionCounter();
+           
             
 
              }else{

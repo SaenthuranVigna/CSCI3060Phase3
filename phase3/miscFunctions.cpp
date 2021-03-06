@@ -8,6 +8,7 @@
 #include "accDelete.h"
 #include "logout.h"
 #include "paybill.h"
+#include "changeplan.h"
 
 void tChooser(vector<string> lType,login session){
 	if(session.getLoginType()=="Standard"){
@@ -47,6 +48,8 @@ void tChooser(vector<string> lType,login session){
 		}else if(transaction == "Disable"){
 			
 		}else if(transaction == "Changeplan"){
+			changePlan c;
+			c.ChangePaymentType(lType,session);
 			
 		}else if(transaction == "Logout"){
 			logout account;

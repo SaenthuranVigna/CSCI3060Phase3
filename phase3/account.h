@@ -23,9 +23,11 @@ class account {
         void setBalance(float balance) { this->balance = balance; }
         void setAccountStatus(string status) { this->status = status; }
         void setType(string type) { this->type = type; }
+        void setPlanType(string planType){this->planType = planType;}
         string getAccountName() { return this->accountName; }
         string getAccountPassword(){return this->accountPassword;}
         string getType() { return type; }
+        string getPlanType(){return planType;}
         int getAccountNumber() { return this->accountNumber; }
         float getBalance() { return this->balance; }
         string getAccountStatus() { return this->status; }
