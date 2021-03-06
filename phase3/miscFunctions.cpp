@@ -7,6 +7,7 @@
 #include "login.h"
 #include "accDelete.h"
 #include "logout.h"
+#include "paybill.h"
 
 void tChooser(vector<string> lType,login session){
 	if(session.getLoginType()=="Standard"){
@@ -15,8 +16,9 @@ void tChooser(vector<string> lType,login session){
 		if(transaction == "Withdrawal"){
 		}else if(transaction == "Transfer"){
 
-		}else if(transaction == "Paybill"){
-			
+		}else if(transaction=="Paybill"){
+			payBill p;
+			p.paybill(lType,session);
 		}else if(transaction == "Deposit"){
 			
 		}else if(transaction == "Logout"){
@@ -39,6 +41,9 @@ void tChooser(vector<string> lType,login session){
 			delAcc.deleteAccount(lType,session,delAcc);
 			
 
+		}else if(transaction=="Paybill"){
+			payBill p;
+			p.paybill(lType,session);
 		}else if(transaction == "Disable"){
 			
 		}else if(transaction == "Changeplan"){

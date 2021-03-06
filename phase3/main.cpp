@@ -50,11 +50,9 @@ vector<string> readFile(string file) {
 int main() { 
     //We need to create an input to take in the command line e.g bank-atm loginAccount1.txt transactionLoginAccount.Atf...
     // compareFiles("base.txt", "second.txt");
-    cout << "==== base.txt ====" << endl;
+    
     std::vector<string> testVec = readFile("base.txt");
-    for (int i = 0; i < testVec.size(); i++) {
-        cout << testVec[i] << endl;
-    }
+   
 
 
     std::vector<string> testAccounts = readFile("bankAccounts.txt");
@@ -70,7 +68,7 @@ int main() {
         
         account newAccount(accountInfoVec[0], accountInfoVec[1],
                            stoi(accountInfoVec[2]), stof(accountInfoVec[3]),
-                           accountInfoVec[4], accountInfoVec[5]);
+                           accountInfoVec[4], accountInfoVec[5],accountInfoVec[6]);
 
         if (newAccount.getType() == "Admin") {
             adminAccounts.push_back(newAccount);
@@ -81,15 +79,7 @@ int main() {
 
     }
 
-    cout << "==== Admin Accounts ====" << endl;
-    for (int i = 0; i < adminAccounts.size(); i++) {
-        cout << adminAccounts[i].getAccountName() << endl;
-    }
-
-    cout << "\n==== Standard Accounts ====" << endl;
-    for (int i = 0; i < standardAccounts.size(); i++) {
-        cout << standardAccounts[i].getAccountName() << endl;
-    }
+ 
 
     login session;
     session.setSessionCounter(0);

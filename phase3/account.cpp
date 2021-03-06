@@ -5,12 +5,13 @@
 #include "account.h"
 using namespace std;
 
-account::account(string accountName,string accountPassword, int accountNumber,  float balance, string type, string status) {
+account::account(string accountName,string accountPassword, int accountNumber,  float balance, string type, string planType ,string status) {
     this->accountName = accountName;
     this->accountPassword = accountPassword;
     this->accountNumber = accountNumber;
     this->balance = balance;
     this->type = type;
+    this->planType= planType;
     this->status = status;
 }
 

@@ -10,11 +10,12 @@ class account {
         string accountPassword;
         int accountNumber;
         float balance;
+        string planType;
         string status;
 
     public:
         vector <string> accountArrays;
-        account(string accountName,string accountPassword, int accountNumber, float balance, string type, string status);
+        account(string accountName,string accountPassword, int accountNumber, float balance, string type,string payType, string status);
         //account(int accountNumber,string accountPassword, float balance);
         void setAccountName(string accountName) { this->accountName = accountName; }
         void setAccountPassword(string accountPassword){ this->accountPassword = accountPassword;}
