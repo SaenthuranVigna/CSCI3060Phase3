@@ -75,7 +75,7 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
             }
         }
 
-        if(ValidUser=false){exit(1);}
+        if(ValidUser=false){tChooser(lType,session);}
         //there will be a check to see if account name is in db
         setAccountName(name);
     
@@ -86,7 +86,7 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
      
         //cin >>num;
         //check if account Number is in DB
-        if(num != adminAccounts[currentAccount].getAccountNumber()){exit(1);}
+        if(num != adminAccounts[currentAccount].getAccountNumber()){tChooser(lType,session);}
      //here there will be a check to see if the account number is in the db   
         setAccountNumber(num);
 
@@ -101,7 +101,7 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
         if(paytype=="SP" || paytype=="NP"){
             ValidInput = true;
         }
-        if(ValidInput==false){exit(1);}
+        if(ValidInput==false){tChooser(lType,session);}
         setpaymentType(paytype);
         adminAccounts[currentAccount].setPlanType(getpaymentType());
         
@@ -116,8 +116,8 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
 
     //ic not admin exit 
     }else{
-        cout <<"Privileged Transaction only!!!"<<endl;
-        exit(1);
+        cout <<"Error: User lacks permissions to access this function"<<endl;
+        tChooser(lType,session);
     }
     
     
