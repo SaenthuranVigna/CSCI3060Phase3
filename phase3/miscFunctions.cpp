@@ -25,7 +25,7 @@ void tChooser(vector<string> lType,login session){
 		}else if(transaction == "Logout"){
 			
 		}else if(transaction == "Create" || transaction == "Delete" || transaction == "Disable" || transaction == "Changeplan"){
-			cout<<"User lacks permissions to access this function"<<endl;
+			cout<<"Error: User lacks permissions to access this function"<<endl;
 
 		}else{
 			exit(0);
