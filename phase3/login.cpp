@@ -71,6 +71,7 @@ void login::adminLogin(vector<string> lType,login session){
      cout << "Enter Account Password"<< endl;
      session.setAPassword(password);
      if(adminVerification(session)==true){
+        cout<<"Login Successful"<<endl;
         tChooser(lType,session);
      }else{
         cout<<"Error: Login failed"<<endl;
@@ -133,11 +134,11 @@ bool login::adminVerification(login session){
                 return true;
             }else{
                 cout<<"Error: Password is incorrect"<<endl;
-                return false
+                return false;
             }
         }else{
             cout << "Error: This account is disabled"<<endl;
-            return false
+            return false;
         }
     }else{
         cout << "Error: Account does not exist"<<endl;

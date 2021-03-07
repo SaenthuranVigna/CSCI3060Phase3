@@ -112,6 +112,7 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
 
         // save transaction
         save();
+        tChooser(lType,session);
 
     //ic not admin exit 
     }else{
@@ -132,6 +133,7 @@ void changePlan::save() {
                << getAccountNumber()<<"_" << "00000000"<<"_"<< getpaymentType()<< endl;
     }
     stream.close();
+    
 }
 
 

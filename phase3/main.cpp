@@ -51,7 +51,7 @@ int main() {
     //We need to create an input to take in the command line e.g bank-atm loginAccount1.txt transactionLoginAccount.Atf...
     // compareFiles("base.txt", "second.txt");
     
-    std::vector<string> testVec = readFile("disableTest.txt");
+    std::vector<string> testVec = readFile("base.txt");
    
 
 

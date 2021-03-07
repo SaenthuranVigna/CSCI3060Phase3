@@ -73,7 +73,7 @@ void payBill::paybill(vector<string> lType,login session){
          
         }
     }
-    if(UserChecker ==false){exit(1);}
+    if(UserChecker ==false){tChooser(lType,session);}
     //cin >> name;
     //there will be a check if account name is in db
     if(UserChecker ==true){
@@ -81,7 +81,7 @@ void payBill::paybill(vector<string> lType,login session){
        //ask for account Number
     cout <<"Account Number: "; 
     num =stoi(lType[session.updateSessionCounter()]);
-    if(adminAccounts[currentAccount].getAccountNumber()!= num){exit(1);}
+    if(adminAccounts[currentAccount].getAccountNumber()!= num){tChooser(lType,session);}
    
     //cin >>num;
     //there will be a check if there is the account number in db
@@ -100,7 +100,7 @@ void payBill::paybill(vector<string> lType,login session){
         setCompany(company);
         
         }else{
-            exit(0);
+            tChooser(lType,session);
         }
 
 
@@ -114,7 +114,7 @@ void payBill::paybill(vector<string> lType,login session){
           
         }else{
             cout<<"Invaild Amount!!!"<<endl;
-            exit(0);
+            tChooser(lType,session);
         }
     }
        adminAccounts[currentAccount].setBalance(getBalance() - amount); 
@@ -136,7 +136,7 @@ void payBill::paybill(vector<string> lType,login session){
         }
     }
      
-    if(UserChecker==false){exit(1);}
+    if(UserChecker==false){tChooser(lType,session);}
     //cin >>num;
     //there will be a check if there is the account number in db
     setAccountNumber(num);
@@ -157,7 +157,7 @@ void payBill::paybill(vector<string> lType,login session){
       
         
         }else{
-            exit(1);
+            tChooser(lType,session);
         }
 
     
@@ -174,8 +174,7 @@ void payBill::paybill(vector<string> lType,login session){
             
 
              }else{
-                cout <<"Invaild Amount!!!"<<endl;
-                exit(1); 
+                tChooser(lType,session);; 
              }
 
          
@@ -189,6 +188,7 @@ void payBill::paybill(vector<string> lType,login session){
     cout <<"PayBill Succsessfull!"<<endl;
     //save transaction
     save();
+    tChooser(lType,session);
 
     
 };

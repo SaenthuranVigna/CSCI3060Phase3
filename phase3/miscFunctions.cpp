@@ -13,6 +13,7 @@
 #include "disable.h"
 
 void tChooser(vector<string> lType,login session){
+	
 	if(session.getLoginType()=="Standard"){
 		string transaction = lType[session.updateSessionCounter()];
 		if(transaction == "Withdrawal"){
@@ -26,6 +27,8 @@ void tChooser(vector<string> lType,login session){
 		}else if(transaction == "Deposit"){
 			
 		}else if(transaction == "Logout"){
+			logout account;
+			account.accLogout(lType,session);
 			
 		}else if(transaction == "Create" || transaction == "Delete" || transaction == "Disable" || transaction == "Changeplan"){
 			cout<<"Error: User lacks permissions to access this function"<<endl;
@@ -37,6 +40,7 @@ void tChooser(vector<string> lType,login session){
 	}else if(session.getLoginType()=="Admin"){
 		//int temp = session.updateSessionCounter();
 		string transaction = lType[session.updateSessionCounter()];
+		
 		if(transaction == "Create"){
 			//callCreate
 		}else if(transaction == "Delete"){
