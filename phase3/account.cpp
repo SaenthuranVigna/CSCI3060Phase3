@@ -14,6 +14,7 @@ account::account(string accountName,string accountPassword, int accountNumber,  
     this->planType= planType;
     this->status = status;
 }
+account::account() {}
 
 /*
 account::account(int accountNumber,string accountPassword, float balance) {

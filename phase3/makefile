@@ -1,5 +1,5 @@
-test: main.o account.o login.o miscFunctions.o accDelete.o logout.o paybill.o changeplan.o
-	g++ main.o account.o login.o miscFunctions.o accDelete.o logout.o paybill.o changeplan.o -o test
+test: main.o account.o login.o miscFunctions.o accDelete.o logout.o paybill.o changeplan.o transfer.o disable.o
+	g++ main.o account.o login.o miscFunctions.o accDelete.o logout.o paybill.o changeplan.o transfer.o disable.o -o test
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -17,5 +17,9 @@ paybill.o: paybill.cpp
 	g++ -c paybill.cpp	
 changeplan.o: changeplan.cpp
 	g++ -c changeplan.cpp
+transfer.o: transfer.cpp
+	g++ -c transfer.cpp
+disable.o: disable.cpp
+	g++ -c disable.cpp
 clean:
 	rm *.o test 

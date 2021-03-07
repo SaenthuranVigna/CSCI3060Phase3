@@ -9,14 +9,17 @@
 #include "logout.h"
 #include "paybill.h"
 #include "changeplan.h"
+#include "transfer.h"
+#include "disable.h"
 
 void tChooser(vector<string> lType,login session){
 	if(session.getLoginType()=="Standard"){
 		string transaction = lType[session.updateSessionCounter()];
-		cout<<transaction<<endl;
 		if(transaction == "Withdrawal"){
-		}else if(transaction == "Transfer"){
 
+		}else if(transaction == "Transfer"){
+			transfer trans;
+			trans.conductTransfer(lType,session);
 		}else if(transaction=="Paybill"){
 			payBill p;
 			p.paybill(lType,session);
@@ -32,8 +35,8 @@ void tChooser(vector<string> lType,login session){
 		}
 
 	}else if(session.getLoginType()=="Admin"){
-		int temp = session.updateSessionCounter();
-		string transaction = lType[temp];
+		//int temp = session.updateSessionCounter();
+		string transaction = lType[session.updateSessionCounter()];
 		if(transaction == "Create"){
 			//callCreate
 		}else if(transaction == "Delete"){
@@ -46,17 +49,21 @@ void tChooser(vector<string> lType,login session){
 			payBill p;
 			p.paybill(lType,session);
 		}else if(transaction == "Disable"){
+			disable dis;
+			dis.disableAccount(lType,session);
 			
 		}else if(transaction == "Changeplan"){
 			changePlan c;
 			c.ChangePaymentType(lType,session);
 			
 		}else if(transaction == "Logout"){
+			// cout <<"testing" << endl; 
 			logout account;
 			account.accLogout(lType,session);
 			
-
-
+		}else if(transaction == "Transfer"){
+			transfer trans;
+			trans.conductTransfer(lType,session);
 		}else{
 			exit(0);
 		}

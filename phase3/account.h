@@ -16,6 +16,7 @@ class account {
     public:
         vector <string> accountArrays;
         account(string accountName,string accountPassword, int accountNumber, float balance, string type,string payType, string status);
+        account();
         //account(int accountNumber,string accountPassword, float balance);
         void setAccountName(string accountName) { this->accountName = accountName; }
         void setAccountPassword(string accountPassword){ this->accountPassword = accountPassword;}
