@@ -48,10 +48,10 @@ void login::standardLogin(vector<string> lType,login session){
      cout << "Enter Account Holders Name"<< endl;
      session.setAName(name);
      if(standardVerification(session) == true){
-        //Function that will check to see what
-        //transaction is being called goes here.
+        cout<<"Login Successful"<<endl;
         tChooser(lType,session);
      }else{
+        cout<<"Error: Login failed"<<endl;
         exit(0);
      }
 
@@ -73,6 +73,7 @@ void login::adminLogin(vector<string> lType,login session){
      if(adminVerification(session)==true){
         tChooser(lType,session);
      }else{
+        cout<<"Error: Login failed"<<endl;
         exit(0);
      }
 
@@ -97,20 +98,21 @@ bool login::standardVerification(login session){
             if(session.getAPassword()==standardAccounts[session.getDbPosition()].getAccountPassword()){
                 if(session.getAName()==standardAccounts[session.getDbPosition()].getAccountName()){
                 return true;}else{
-                    cout<< "Error: account holder name does not match"<<endl;
+                    cout<< "Error: Account holder name does not match"<<endl;
                     return false;
 
                 }
             }else{
-                cout<<"Error: password is incorrect"<<endl;
+                cout<<"Error: Password is incorrect"<<endl;
                 return false;
 
             }
         }else{
-            cout << "Error: this account is disabled"<<endl;
+            cout << "Error: This account is disabled"<<endl;
             return false;
         }
     }else{
+        cout << "Error: Account does not exist"<<endl;
         return false;
     }
     return false;
@@ -126,12 +128,21 @@ bool login::adminVerification(login session){
         }
     }
     if(verify == true){
-        if(session.getAPassword()==adminAccounts[session.getDbPosition()].getAccountPassword()){
-            return true;
+        if(adminAccounts[session.getDbPosition()].getAccountStatus()=="A"){
+            if(session.getAPassword()==adminAccounts[session.getDbPosition()].getAccountPassword()){
+                return true;
+            }else{
+                cout<<"Error: Password is incorrect"<<endl;
+                return false
+            }
+        }else{
+            cout << "Error: This account is disabled"<<endl;
+            return false
         }
     }else{
+        cout << "Error: Account does not exist"<<endl;
         return false;
-    }
+         }
     return false;
 };   
 
@@ -194,14 +205,3 @@ string login::getAPassword(){
 string login::getAName(){
     return this->aName;
 };
-
-
-
-
-
-
-
-
-
-
-
