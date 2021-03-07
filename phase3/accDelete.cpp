@@ -61,9 +61,10 @@ void accDelete::deleteAccount(vector<string> lType,login session, accDelete delA
 
 		}
 		if(verify==true){
+			cout<<"Verification Successful"<<endl;
 			int temp = delAcc.getDbPosition();
 			standardAccounts.erase(standardAccounts.begin()+temp);
-			cout<<"Account Successfully deleted!"<<endl;
+			cout<<"Account Successfully Deleted"<<endl;
 		}
 		tChooser(lType,session);
 

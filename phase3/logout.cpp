@@ -8,6 +8,7 @@
 using namespace std;
 
 void logout::accLogout(vector<string> lType,login session){
+	cout <<"Logout successful"<<endl;
     session.loginType(lType,session);
 }
 
