@@ -61,10 +61,16 @@ void accDelete::deleteAccount(vector<string> lType,login session, accDelete delA
 
 		}
 		if(verify==true){
-			cout<<"Verification Successful"<<endl;
 			int temp = delAcc.getDbPosition();
-			standardAccounts.erase(standardAccounts.begin()+temp);
-			cout<<"Account Successfully Deleted"<<endl;
+			if(delAcc.getAName()==standardAccounts[temp].getAccountName()){
+				cout<<"Verification Successful"<<endl;
+				standardAccounts.erase(standardAccounts.begin()+temp);
+				cout<<"Account Successfully Deleted"<<endl;
+			}else{
+				cout<<"Error: Account holder name does not match"<<endl;
+			}
+		}else{
+			cout <<"Error: Account does not exist"<<endl;
 		}
 		tChooser(lType,session);
 
