@@ -3,11 +3,11 @@ Enter Account Number
 Enter Account Password
 Enter Account Holders Name
 Login Successful
-Deposit
 Select account name
-Valid
+Valid 
+Select account id
 Valid
 Select amount
 Valid
-Deposit of [amount] complete
-Logout
+Deposit of 10 complete
+Logout Successful

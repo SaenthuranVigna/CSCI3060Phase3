@@ -9,7 +9,7 @@ Select Account Number
 Valid
 Select Amount
 Valid
-Deposit of [amount] complete
+Deposit of 100 complete
 Withdrawal
 Select account holder
 Valid
@@ -17,4 +17,4 @@ Select account number
 Valid
 Enter amount (all of accounts money)
 Cannot remove funds locked
-Logout
+Logout Successful
