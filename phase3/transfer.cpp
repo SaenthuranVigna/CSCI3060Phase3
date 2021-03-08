@@ -22,7 +22,7 @@ void transfer::setSession(login session) {
     }
 }
 
-void transfer::setAccountFrom(string accountNum, string name) {
+void transfer::setAccountFrom(vector<string> lType, login session, string accountNum, string name) {
     int accountNumber;
     string holderName;
 
@@ -40,7 +40,8 @@ void transfer::setAccountFrom(string accountNum, string name) {
         }
 
         if (foundName == false) {
-            cout << "Error: name not found" << endl;
+            cout << "Error: Name not found" << endl;
+            tChooser(lType, session);
         }
 
         cout << "Please enter the account number: " << endl;
@@ -59,7 +60,8 @@ void transfer::setAccountFrom(string accountNum, string name) {
         }
 
         if (foundNum == false) {
-            cout << "Error: account not found under holder's name" << endl;
+            cout << "Error: Account holder’s name does not match with account number" << endl;
+            tChooser(lType, session);
         }
     }
     else {
@@ -77,34 +79,43 @@ void transfer::setAccountFrom(string accountNum, string name) {
         }
 
         if (found == false) {
-            cout << "Error: Account not found." << endl;
+            cout << "Error: Account number invalid" << endl;
+            tChooser(lType, session);
         }
     }
 }
 
-void transfer::setAccountTo(string accountNum) {
+void transfer::setAccountTo(vector<string> lType, login session, string accountNum) {
 
     int accountNumber;
 
     cout << "Please enter the account number: " << endl;
     accountNumber = stoi(accountNum);
 
-    // Seeing if the account exists in the standardAccount vector
-    bool found = false;
-    for (int i = 0; i < standardAccounts.size(); i++) {
-        if (accountNumber == standardAccounts[i].getAccountNumber()) {
-            found = true;
-            this->accountFrom = &standardAccounts[i];
-            cout << "Account number valid" << endl;
-        }
+    // Checking that the sending and receiving accounts are not the same
+    if (accountNumber == accountFrom->getAccountNumber()) {
+        cout << "Error: Transferring account and receiving account cannot be the same" << endl;
+        tChooser(lType, session);
     }
-    
-    if (found == false) {
-        cout << "Error: Account not found" << endl;
+    else {    
+        // Seeing if the account exists in the standardAccount vector
+        bool found = false;
+        for (int i = 0; i < standardAccounts.size(); i++) {
+            if (accountNumber == standardAccounts[i].getAccountNumber()) {
+                found = true;
+                this->accountTo = &standardAccounts[i];
+                cout << "Account number valid" << endl;
+            }
+        }
+
+        if (found == false) {
+            cout << "Error: Account number invalid" << endl;
+            tChooser(lType, session);
+        }
     }
 }
 
-void transfer::setAmount(string setAmount) {
+void transfer::setAmount(vector<string> lType, login session, string setAmount) {
     float amount;
 
     cout << "Please enter the amount to transfer: " << endl;
@@ -118,8 +129,17 @@ void transfer::setAmount(string setAmount) {
         this->transferAmount = amount;
         cout << "Valid amount" << endl;
     }
+    else if (adminTransaction == false && amount > 1000.00) {
+        cout << "Error: Selected transfer amount exceeds the $1000 session transfer limit" << endl;
+        tChooser(lType, session);
+    }
+    else if (amount <= 0.00) {
+        cout << "Error: Selected transfer amount must be greater than $0.00" << endl;
+        tChooser(lType, session);
+    }
     else {
         cout << "Error: Cannot transfer set amount." << endl;
+        tChooser(lType, session);
     }
 }
 
@@ -133,39 +153,46 @@ void transfer::conductTransfer(vector<string> lType, login session) {
     if (lType[session.getSessionCounter()] != "cancelTransfer") {
         if (adminTransaction == true) {
             string name = lType[session.updateSessionCounter()];
-            string account = lType[session.updateSessionCounter()];
-            setAccountFrom(account, name);
+            string account = lType[session.getSessionCounter()];
+            setAccountFrom(lType, session, account, name);
+            session.updateSessionCounter()
         }
         else if (adminTransaction == false){
-            setAccountFrom(lType[session.updateSessionCounter()], "");
+            setAccountFrom(lType, session, lType[session.updateSessionCounter()], "");
         }
     }
 
     if (lType[session.getSessionCounter()] != "cancelTransfer") {
-        setAccountTo(lType[session.updateSessionCounter()]);
+        setAccountTo(lType, session, lType[session.updateSessionCounter()]);
     }
 
     if (lType[session.getSessionCounter()] != "cancelTransfer") {
-        setAmount(lType[session.updateSessionCounter()]);
+        setAmount(lType, session, lType[session.updateSessionCounter()]);
     }
 
     if (lType[session.getSessionCounter()] != "cancelTransfer") {
-        if (accountTo->getAccountNumber() != 0 && accountFrom->getAccountNumber() != 0) {
+        if (accountTo->getAccountStatus() != "D" && accountFrom->getAccountStatus() != "D") {
             float accountFromBalance = accountFrom->getBalance();
             float accountToBalance = accountTo->getBalance();
 
-            if ((accountFromBalance - transferAmount) > 0.00 && (accountToBalance + transferAmount) > 0.00) {
+            if ((accountFromBalance - transferAmount) >= 0.00 && (accountToBalance + transferAmount) >= 0.00) {
                 accountFrom->setBalance(accountFromBalance - transferAmount);
                 accountTo->setBalance(accountToBalance + transferAmount);
                 // saveLogs();
                 cout << "Transfer successful" << endl;
             }
+            else if ((accountFromBalance - transferAmount) < 0.00 && (accountToBalance + transferAmount) >= 0.00) {
+                cout << "Error: Transferring account must have a balance of at least $0.00 after interaction" << endl;
+            }
+            else if ((accountFromBalance - transferAmount) >= 0.00 && (accountToBalance + transferAmount) < 0.00) {
+                cout << "Error: Receiving account must have a balance of at least $0.00 after interaction" << endl;
+            }
             else {
-                cout << "Transfer unsuccessful" << endl;
+                cout << "Error: Transfer unsuccessful" << endl;
             }
         }
         else {
-            cout << "Transfer unsuccessful" << endl;
+            cout << "Error: One or more of the selected accounts are disabled" << endl;
         }
 
         tChooser(lType,session);

@@ -22,7 +22,7 @@ void disable::setSession(login session) {
     }
 }
 
-void disable::setSelectedAccount(string accountNum, string name) {
+void disable::setSelectedAccount(vector<string> lType, login session, string accountNum, string name) {
     if (adminTransaction == true) {
         string holderName;
         int accountNumber;
@@ -40,7 +40,8 @@ void disable::setSelectedAccount(string accountNum, string name) {
         }
 
         if (foundName == false) {
-            cout << "Error: name not found" << endl;
+            cout << "Error: Account holder's name could not be found" << endl;
+            tChooser(lType, session);
         }
 
         cout << "Please enter the account number: " << endl;
@@ -60,10 +61,12 @@ void disable::setSelectedAccount(string accountNum, string name) {
 
         if (foundNum == false) {
             cout << "Error: Account not found under holder's name" << endl;
+            tChooser(lType, session);
         }
     }
     else {
         cout << "Error: You can only disable an account in admin mode" << endl;
+        tChooser(lType, session);
     }
 }
 
@@ -75,8 +78,9 @@ void disable::disableAccount(vector<string> lType, login session) {
 
     if (lType[session.getSessionCounter()] != "cancelDisable") {
         string name = lType[session.updateSessionCounter()];
-        string account = lType[session.updateSessionCounter()];
-        setSelectedAccount(account, name);
+        string account = lType[session.getSessionCounter()];
+        setSelectedAccount(lType, session, account, name);
+        session.updateSessionCounter();
     }
 
     if (lType[session.getSessionCounter()] != "cancelDisable") {

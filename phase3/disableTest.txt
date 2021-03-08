@@ -3,11 +3,5 @@ Admin
 10000
 Admin123
 Disable
-John Doe
-10001
+Smith
 Logout
-Login
-Standard
-10001
-Password123
-John Doe

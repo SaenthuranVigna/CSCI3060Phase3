@@ -4,7 +4,5 @@ Standard
 Password123
 John Doe
 Transfer
-10001
-10002
-100.00
+12345
 Logout

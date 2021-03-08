@@ -25,7 +25,7 @@ class disable {
     public:
         disable();
         void setSession(login session);
-        void setSelectedAccount(string accountNum, string name);
+        void setSelectedAccount(vector<string> lType, login session, string accountNum, string name);
         void disableAccount(vector<string> lType, login session);
 };
 

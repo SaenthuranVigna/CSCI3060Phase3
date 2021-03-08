@@ -1,4 +1,4 @@
-Select Session type “Standard” or “Admin”
+Select Session Type: Admin or Standard
 Enter Account Number
 Enter Account Password
 Login Successful
@@ -6,5 +6,5 @@ Disable account selected
 Please enter bank account holder’s name:
 Valid account holder
 Please enter the account number:
-Error: account number is not under the holder’s name
+Error: Account number is not under the holder’s name
 Logout Successful

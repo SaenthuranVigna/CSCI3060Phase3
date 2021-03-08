@@ -1,4 +1,4 @@
-Select Session type “Standard” or “Admin”
+Select Session Type: Admin or Standard
 Enter Account Number
 Enter Account Password
 Login Successful
@@ -9,8 +9,9 @@ Please enter the account number:
 Account number valid
 Account successfully disabled
 Logout Successful
-Select Session type “Standard” or “Admin”
+Select Session Type: Admin or Standard
 Enter Account Number
 Enter Account Password
 Enter Account Holders Name
-ERROR: this account is disabled
+ERROR: This account is disabled
+Error: Login failed

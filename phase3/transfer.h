@@ -26,9 +26,9 @@ class transfer {
     public:
         transfer();
         void setSession(login session);
-        void setAccountFrom(string accountNum, string name);
-        void setAccountTo(string accountNum);
-        void setAmount(string setAmount);
+        void setAccountFrom(vector<string> lType, login session, string accountNum, string name);
+        void setAccountTo(vector<string> lType, login session, string accountNum);
+        void setAmount(vector<string> lType, login session, string setAmount);
         void conductTransfer(vector<string> lType, login session);
 };
 
