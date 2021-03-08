@@ -27,7 +27,7 @@ void disable::setSelectedAccount(string accountNum, string name) {
         string holderName;
         int accountNumber;
 
-        cout << "Please enter the account holder's name: ";
+        cout << "Please enter bank account holder's name: " << endl;
         holderName = name;
 
         // Seeing if the name exists in the standardAccount vector
@@ -35,7 +35,7 @@ void disable::setSelectedAccount(string accountNum, string name) {
         for (int i = 0; i < standardAccounts.size(); i++) {
             if (holderName == standardAccounts[i].getAccountName()) {
                 foundName = true;
-                cout << "Name valid" << endl;
+                cout << "Valid account holder" << endl;
             }
         }
 
@@ -43,7 +43,7 @@ void disable::setSelectedAccount(string accountNum, string name) {
             cout << "Error: name not found" << endl;
         }
 
-        cout << "Please enter the account number you wish to disable: ";
+        cout << "Please enter the account number: " << endl;
         accountNumber = stoi(accountNum);
 
         // Seeing if the account exists in the standardAccount vector
@@ -53,7 +53,7 @@ void disable::setSelectedAccount(string accountNum, string name) {
                 (accountNumber == standardAccounts[i].getAccountNumber()) &&
                 foundName == true) {
                 foundNum = true;
-                this->selectedAccount = standardAccounts[i];
+                this->selectedAccount = &standardAccounts[i];
                 cout << "Account number valid" << endl;
             }
         }
@@ -69,7 +69,7 @@ void disable::setSelectedAccount(string accountNum, string name) {
 
 void disable::disableAccount(vector<string> lType, login session) {
 
-    cout << "Disable selected" << endl;
+    cout << "Disable account selected" << endl;
 
     setSession(session);
 
@@ -80,8 +80,8 @@ void disable::disableAccount(vector<string> lType, login session) {
     }
 
     if (lType[session.getSessionCounter()] != "cancelDisable") {
-        if (selectedAccount.getAccountNumber() != 0 && selectedAccount.getAccountStatus() == "A" && adminTransaction == true) {
-            selectedAccount.setAccountStatus("D");
+        if (selectedAccount->getAccountNumber() != 0 && selectedAccount->getAccountStatus() == "A" && adminTransaction == true) {
+            selectedAccount->setAccountStatus("D");
             // saveLogs();
             cout << "Account successfully disabled" << endl;
         }

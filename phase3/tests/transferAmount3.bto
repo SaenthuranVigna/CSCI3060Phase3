@@ -1,0 +1,14 @@
+Select Session type “Standard” or “Admin”
+Enter Account Number
+Enter Account Password
+Enter Account Holders Name
+Login Successful
+Transfer selected
+Please enter transferring account number:
+Account number valid
+Please enter receiving account number:
+Account number valid
+Please enter transfer amount:
+ERROR: selected transfer amount must be greater than $0.00
+Logout Successful
+

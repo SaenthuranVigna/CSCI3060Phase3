@@ -15,8 +15,8 @@ class transfer {
     private:
         // Private Variables
         int transactionNumber;
-        account accountFrom;
-        account accountTo;
+        account *accountFrom;
+        account *accountTo;
         bool adminTransaction;
         float transferAmount;
 

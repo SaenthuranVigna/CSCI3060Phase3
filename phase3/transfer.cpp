@@ -27,7 +27,7 @@ void transfer::setAccountFrom(string accountNum, string name) {
     string holderName;
 
     if (holderName != "") {
-        cout << "Please enter the account holder's name: ";
+        cout << "Please enter the account holder's name: " << endl;
         holderName = name;
         cout << name << endl;
 
@@ -36,7 +36,7 @@ void transfer::setAccountFrom(string accountNum, string name) {
         for (int i = 0; i < standardAccounts.size(); i++) {
             if (holderName == standardAccounts[i].getAccountName()) {
                 foundName = true;
-                cout << "Name valid" << endl;
+                cout << "Valid account holder" << endl;
             }
         }
 
@@ -44,7 +44,7 @@ void transfer::setAccountFrom(string accountNum, string name) {
             cout << "Error: name not found" << endl;
         }
 
-        cout << "Please enter the account number: ";
+        cout << "Please enter the account number: " << endl;
         accountNumber = stoi(accountNum);
         cout << accountNumber << endl;
 
@@ -55,7 +55,7 @@ void transfer::setAccountFrom(string accountNum, string name) {
                 (accountNumber == standardAccounts[i].getAccountNumber()) &&
                 foundName == true) {
                 foundNum = true;
-                this->accountFrom = standardAccounts[i];
+                this->accountFrom = &standardAccounts[i];
                 cout << "Account number valid" << endl;
             }
         }
@@ -65,7 +65,7 @@ void transfer::setAccountFrom(string accountNum, string name) {
         }
     }
     else {
-        cout << "Please enter the account number: ";
+        cout << "Please enter the account number: " << endl;
         accountNumber = stoi(accountNum);
         cout << accountNumber << endl;
 
@@ -74,7 +74,7 @@ void transfer::setAccountFrom(string accountNum, string name) {
         for (int i = 0; i < standardAccounts.size(); i++) {
             if (accountNumber == standardAccounts[i].getAccountNumber()) {
                 found = true;
-                this->accountFrom = standardAccounts[i];
+                this->accountFrom = &standardAccounts[i];
                 cout << "Account number valid" << endl;
             }
         }
@@ -89,7 +89,7 @@ void transfer::setAccountTo(string accountNum) {
 
     int accountNumber;
 
-    cout << "Please enter the account number: ";
+    cout << "Please enter the account number: " << endl;
     accountNumber = stoi(accountNum);
     cout << accountNumber << endl;
 
@@ -98,7 +98,7 @@ void transfer::setAccountTo(string accountNum) {
     for (int i = 0; i < standardAccounts.size(); i++) {
         if (accountNumber == standardAccounts[i].getAccountNumber()) {
             found = true;
-            this->accountFrom = standardAccounts[i];
+            this->accountFrom = &standardAccounts[i];
             cout << "Account number valid" << endl;
         }
     }
@@ -111,7 +111,7 @@ void transfer::setAccountTo(string accountNum) {
 void transfer::setAmount(string setAmount) {
     float amount;
 
-    cout << "Please enter the amount to transfer: ";
+    cout << "Please enter the amount to transfer: " << endl;
     cout << setAmount << endl;
     amount = stof(setAmount);
 
@@ -155,13 +155,13 @@ void transfer::conductTransfer(vector<string> lType, login session) {
     }
 
     if (lType[session.getSessionCounter()] != "cancelTransfer") {
-        if (accountTo.getAccountNumber() != 0 && accountFrom.getAccountNumber() != 0) {
-            float accountFromBalance = accountFrom.getBalance();
-            float accountToBalance = accountTo.getBalance();
+        if (accountTo->getAccountNumber() != 0 && accountFrom->getAccountNumber() != 0) {
+            float accountFromBalance = accountFrom->getBalance();
+            float accountToBalance = accountTo->getBalance();
 
             if ((accountFromBalance - transferAmount) > 0.00 && (accountToBalance + transferAmount) > 0.00) {
-                accountFrom.setBalance(accountFromBalance - transferAmount);
-                accountTo.setBalance(accountToBalance + transferAmount);
+                accountFrom->setBalance(accountFromBalance - transferAmount);
+                accountTo->setBalance(accountToBalance + transferAmount);
                 // saveLogs();
                 cout << "Transfer successful" << endl;
             }

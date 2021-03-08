@@ -1,0 +1,11 @@
+Select Session type “Standard” or “Admin”
+Enter Account Number
+Enter Account Password
+Login Successful
+Transfer selected
+please enter holder’s name:
+Valid Account Holder
+please enter account number:
+Error: account holder’s name does not match with account number
+transfer cancelled
+Logout successful

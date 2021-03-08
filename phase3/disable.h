@@ -17,7 +17,7 @@ class disable {
         // Private Variables
         int transactionNumber;
         bool adminTransaction;
-        account selectedAccount;
+        account *selectedAccount;
 
         // Private Functions
         void saveLogs();
