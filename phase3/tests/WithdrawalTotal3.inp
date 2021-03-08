@@ -1,8 +1,8 @@
 Login 
 Admin 
-AccountNumber 
-Password
-Account 
-AccountNumber
-Amount (amount > total in account that is being withdrawn from)
+10000 
+Admin123
+Withdrawal
+Admin1
+100000000
 Logout

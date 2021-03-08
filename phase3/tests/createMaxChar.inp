@@ -1,7 +1,7 @@
 Login 
 Admin 
-AccountNumber 
-Password 
+10000 
+Admin123 
 Create
-AccountName (>20 characters)
+thismustbelongerthan20characterslong
 Logout

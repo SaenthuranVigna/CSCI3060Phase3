@@ -1,9 +1,9 @@
 Login 
 Admin 
-AccountNumber 
-Password 
-AccountName 
-AccountId
+10000 
+Admin123 
+Admin1 
+11111
 Create
-AccountName 
+Admin1 
 logout

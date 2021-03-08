@@ -1,14 +1,14 @@
 Login 
 Standard  
-AccountNumber 
-Password 
-AccountName
+10000 
+Admin123 
+Admin1
 Deposit
-AccountName
-AccountNumber
-Amount
+Admin1
+11111
+100
 Withdrawal
-AccountName
-AccountNumber
-Deposit (all money)
+Admin1
+11111
+1000000
 Logout 

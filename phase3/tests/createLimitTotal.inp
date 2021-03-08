@@ -1,8 +1,8 @@
 Login 
 Admin 
-AccountNumber 
-Password 
+10000 
+Admin123 
 Create
-AccountName 
-Balance (> 99999.99, so 100000)
+Admin1
+100000
 Logout
