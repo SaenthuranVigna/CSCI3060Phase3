@@ -33,17 +33,17 @@ void create::createAccount(vector<string> lType, login session) {
         uniqueID = true;
     }
 
-    account = new Account(aName, newID, balance);
+    // account acc = new account(aName, newID, balance);
     //Add account to DB
 }
 
-create::create(vector<string> lType,login session) {
+void create::Create(vector<string> lType,login session) {
     string log = session.getLoginType();
     if (log != "Admin") {
         cout << "Invalid" << endl;
         return;
     }
-    setAccountName(lType[session.getSessionCounter()]);
+    setAccountName(,lType[session.getSessionCounter()]);
     setBalance(lType[session.getSessionCounter()]);
     createAccount(lType, session);
     saveLog();
@@ -54,8 +54,8 @@ void create::saveLog() {
     stream.open("createLogs.etf", ios::out);
     if (!stream) { exit(1); }
     else {
-        stream << "05_" << loginType << account.getAccountName() 
-               << account.getAccountNumber() << balance << endl;
+        stream << "05_" << loginType << acc.getAccountName() 
+               << acc.getAccountNumber() << balance << endl;
     }
     close(file);
 }

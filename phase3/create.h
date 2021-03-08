@@ -4,23 +4,23 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include "account.h"
 
 using namespace std;
 
 class create {
-    private:
-        Account account;
+    public:
+        account acc;
         float balance;
         string aName, loginType;
 
-        void saveLog():
-
-    public:
-        create(vector<string> lType,login session);
+        void saveLog();
+        
+        void Create(vector<string> lType,login session);
         void setAccountName(string aName, string loginType);
-        bool setBalance(float balance);
-        void createAccount();
-}
+        bool setBalance(vector<string> lType, float balance);
+        void createAccount(vector<string> lType, login session);
+};
 
 extern vector<account> adminAccounts;
 extern vector<account> standardAccounts;

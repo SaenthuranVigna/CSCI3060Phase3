@@ -10,15 +10,14 @@
 using namespace std;
 
 class deposit {
-    private: 
-        Account transactionAccount;
+    public:
+        account transactionAccount;
         string loginType, aName;
         int aNumber;
         float amount;
 
         void saveLog();
-    
-    public:
+
         deposit();
         void makeDeposit();
         bool setAccountName(string aName, vector<account> type);

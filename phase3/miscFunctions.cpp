@@ -52,6 +52,7 @@ void tChooser(vector<string> lType,login session){
 		if(transaction == "Create"){
 			//callCreate
             create create;
+            create.Create(lType,session);
 		}else if(transaction == "Delete"){
 
 			accDelete delAcc;
