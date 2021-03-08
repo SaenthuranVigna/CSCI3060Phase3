@@ -11,13 +11,16 @@
 #include "changeplan.h"
 #include "transfer.h"
 #include "disable.h"
+#include "deposit.h"
+#include "withdrawal.h"
+#include "create.h"
 
 void tChooser(vector<string> lType,login session){
 	
 	if(session.getLoginType()=="Standard"){
 		string transaction = lType[session.updateSessionCounter()];
-		if(transaction == "Withdrawal"){
-
+		if(transaction == "Withdrawal") {
+            withdrawal withdraw;
 		}else if(transaction == "Transfer"){
 			transfer trans;
 			trans.conductTransfer(lType,session);
@@ -25,7 +28,7 @@ void tChooser(vector<string> lType,login session){
 			payBill p;
 			p.paybill(lType,session);
 		}else if(transaction == "Deposit"){
-			
+			deposit depo;
 		}else if(transaction == "Logout"){
 			logout account;
 			account.accLogout(lType,session);
@@ -48,6 +51,7 @@ void tChooser(vector<string> lType,login session){
 		
 		if(transaction == "Create"){
 			//callCreate
+            create create;
 		}else if(transaction == "Delete"){
 
 			accDelete delAcc;
@@ -77,7 +81,12 @@ void tChooser(vector<string> lType,login session){
 			cout<<"Error: User cannot login into another account while logged in"<<endl;
 			tChooser(lType,session);
 
-		}else{
+		}else if (transaction == "Withdrawal") {
+            withdrawal withdraw;
+        }
+        else if (transaction == "Deposit") {
+            deposit depo;
+        }else{
 			exit(0);
 		}
 	}
