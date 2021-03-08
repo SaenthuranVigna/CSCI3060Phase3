@@ -75,7 +75,10 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
             }
         }
 
-        if(ValidUser=false){tChooser(lType,session);}
+        if(ValidUser=false){
+            cout << "Error: Account Name Not in DataBase"<<endl;
+            tChooser(lType,session);
+            }
         //there will be a check to see if account name is in db
         setAccountName(name);
     
@@ -101,7 +104,10 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
         if(paytype=="SP" || paytype=="NP"){
             ValidInput = true;
         }
-        if(ValidInput==false){tChooser(lType,session);}
+        if(ValidInput==false){
+            cout<< "Error: Incorrect payment plan"<<endl;
+            tChooser(lType,session);
+            }
         setpaymentType(paytype);
         adminAccounts[currentAccount].setPlanType(getpaymentType());
         

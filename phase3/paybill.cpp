@@ -73,13 +73,16 @@ void payBill::paybill(vector<string> lType,login session){
          
         }
     }
-    if(UserChecker ==false){tChooser(lType,session);}
+    if(UserChecker ==false){
+        cout <<"Error: Account Name not In DataBase"<<endl;
+        tChooser(lType,session);
+        }
     //cin >> name;
     //there will be a check if account name is in db
     if(UserChecker ==true){
     setAccountName(name);
        //ask for account Number
-    cout <<"Account Number: "; 
+    cout <<"Account Number: "<<endl; 
     num =stoi(lType[session.updateSessionCounter()]);
     if(adminAccounts[currentAccount].getAccountNumber()!= num){tChooser(lType,session);}
    
@@ -97,9 +100,11 @@ void payBill::paybill(vector<string> lType,login session){
    
     //cin >>company;
     if(company == "EC" || company == "CQ" || company == "FI"){
+
         setCompany(company);
         
         }else{
+            cout <<"Error: Incorrect Company Name"<<endl;
             tChooser(lType,session);
         }
 
@@ -113,7 +118,7 @@ void payBill::paybill(vector<string> lType,login session){
             setAmount(amount);
           
         }else{
-            cout<<"Invaild Amount!!!"<<endl;
+            cout<<"Error:Amount is more than Balance"<<endl;
             tChooser(lType,session);
         }
     }
@@ -136,7 +141,10 @@ void payBill::paybill(vector<string> lType,login session){
         }
     }
      
-    if(UserChecker==false){tChooser(lType,session);}
+    if(UserChecker==false){
+        cout <<"Error: Account Name not In DataBase"<<endl;
+        tChooser(lType,session);
+        }
     //cin >>num;
     //there will be a check if there is the account number in db
     setAccountNumber(num);
@@ -153,10 +161,12 @@ void payBill::paybill(vector<string> lType,login session){
  
     //cin >>company;
     if(company == "EC" || company == "CQ" || company == "FI"){
+        
         setCompany(company);
       
         
         }else{
+            cout <<"Error: Incorrect Company Name"<<endl;
             tChooser(lType,session);
         }
 
@@ -164,7 +174,7 @@ void payBill::paybill(vector<string> lType,login session){
     //check if loggin is admin so payment can be greater than $2000.00
     
         //if payment is more than $2000.00 exit
-        cout <<"Amount: "<<endl;; 
+        cout <<"Amount: "<<endl; 
         amount =stof(lType[session.updateSessionCounter()]);
         //cin >>amount;
         //account balance is greater than 0.00 after paying
@@ -174,6 +184,11 @@ void payBill::paybill(vector<string> lType,login session){
             
 
              }else{
+                 if(amount >=2000.00){
+                 cout<<"Error:Amount is More than $2000.00 limit"<<endl;
+                 }else{
+                     cout<<"Error:Amount is more than Balance"<<endl;
+                 }
                 tChooser(lType,session);; 
              }
 
