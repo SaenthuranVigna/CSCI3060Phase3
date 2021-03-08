@@ -11,10 +11,10 @@ void logout::accLogout(vector<string> lType,login session){
     
     if (lType[session.getSessionCounter()+1] != "") {
         session.loginType(lType,session);
-        cout << "Logout successful" << endl;
+        cout << "Logout Successful" << endl;
     }
     else {
-        cout << "Logout successful" << endl;
+        cout << "Logout Successful" << endl;
         exit(0);
     }
 }
