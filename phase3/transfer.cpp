@@ -155,7 +155,7 @@ void transfer::conductTransfer(vector<string> lType, login session) {
             string name = lType[session.updateSessionCounter()];
             string account = lType[session.getSessionCounter()];
             setAccountFrom(lType, session, account, name);
-            session.updateSessionCounter()
+            session.updateSessionCounter();
         }
         else if (adminTransaction == false){
             setAccountFrom(lType, session, lType[session.updateSessionCounter()], "");
