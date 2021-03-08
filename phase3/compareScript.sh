@@ -1,5 +1,5 @@
 #!/bin/sh
-chdir testers
+chdir output
 for i in *
 do
   echo "comparing test $i"
