@@ -93,7 +93,7 @@ void disable::disableAccount(vector<string> lType, login session) {
         tChooser(lType,session);
     }
     else {
-        cout << lType[session.getSessionCounter()] << endl;
+        cout << "Account disable cancelled" << endl;
         session.updateSessionCounter();
         tChooser(lType,session);
     }

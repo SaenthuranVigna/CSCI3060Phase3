@@ -29,7 +29,6 @@ void transfer::setAccountFrom(string accountNum, string name) {
     if (holderName != "") {
         cout << "Please enter the account holder's name: " << endl;
         holderName = name;
-        cout << name << endl;
 
         // Seeing if the name exists in the standardAccount vector
         bool foundName = false;
@@ -46,7 +45,6 @@ void transfer::setAccountFrom(string accountNum, string name) {
 
         cout << "Please enter the account number: " << endl;
         accountNumber = stoi(accountNum);
-        cout << accountNumber << endl;
 
         // Seeing if the account exists in the standardAccount vector
         bool foundNum = false;
@@ -67,7 +65,6 @@ void transfer::setAccountFrom(string accountNum, string name) {
     else {
         cout << "Please enter the account number: " << endl;
         accountNumber = stoi(accountNum);
-        cout << accountNumber << endl;
 
         // Seeing if the account exists in the standardAccount vector
         bool found = false;
@@ -91,7 +88,6 @@ void transfer::setAccountTo(string accountNum) {
 
     cout << "Please enter the account number: " << endl;
     accountNumber = stoi(accountNum);
-    cout << accountNumber << endl;
 
     // Seeing if the account exists in the standardAccount vector
     bool found = false;
@@ -112,7 +108,6 @@ void transfer::setAmount(string setAmount) {
     float amount;
 
     cout << "Please enter the amount to transfer: " << endl;
-    cout << setAmount << endl;
     amount = stof(setAmount);
 
     if (adminTransaction == true  && amount > 0.00) {
@@ -176,7 +171,7 @@ void transfer::conductTransfer(vector<string> lType, login session) {
         tChooser(lType,session);
     }
     else {
-        cout << lType[session.getSessionCounter()] << endl;
+        cout << "Transfer cancelled" << endl;
         session.updateSessionCounter();
         tChooser(lType,session);
     }
