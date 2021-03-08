@@ -47,15 +47,15 @@ vector<string> readFile(string file) {
     return vec;
 }
 
-int main() { 
+int main(int argc, char *argv[]) { 
     //We need to create an input to take in the command line e.g bank-atm loginAccount1.txt transactionLoginAccount.Atf...
     // compareFiles("base.txt", "second.txt");
     
-    std::vector<string> testVec = readFile("disableTest.txt");
+    std::vector<string> testVec = readFile(argv[1]);
    
 
 
-    std::vector<string> testAccounts = readFile("bankAccounts.txt");
+    std::vector<string> testAccounts = readFile(argv[2]);
     for (int i = 0; i < testAccounts.size(); i++) {
         
         // Using stringstream to parse each line by the commas

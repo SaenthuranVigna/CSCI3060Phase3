@@ -1,7 +1,7 @@
 #!/bin/sh
 chdir testers
-for i in *.txt
+for i in *.inp
 do
   echo "running test $i"
-  .././test $i >>../output/output$i.atf
+  .././test $i ../"bankAccounts.txt" >>../output/output$i.atf
 done
