@@ -63,7 +63,7 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
     //check if admin and continue
     if(getadminTransaction() == true){
           
-        cout <<"Account Name: ";
+        cout <<"Account Name: "<<endl;
         name = lType[session.updateSessionCounter()];
        
         //cin >>name;
@@ -84,7 +84,7 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
     
 
     //ask for account Number
-        cout <<"Account Number: "; 
+        cout <<"Account Number: "<<endl; 
         num =stoi(lType[session.updateSessionCounter()]);
      
         //cin >>num;
