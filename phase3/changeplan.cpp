@@ -75,7 +75,7 @@ void changePlan::ChangePaymentType(vector<string> lType,login session){
             }
         }
 
-        if(ValidUser=false){
+        if(ValidUser==false){
             cout << "Error: Account Name Not in DataBase"<<endl;
             tChooser(lType,session);
             }
