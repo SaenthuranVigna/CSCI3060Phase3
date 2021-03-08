@@ -32,6 +32,11 @@ void tChooser(vector<string> lType,login session){
 			
 		}else if(transaction == "Create" || transaction == "Delete" || transaction == "Disable" || transaction == "Changeplan"){
 			cout<<"Error: User lacks permissions to access this function"<<endl;
+			tChooser(lType,session);
+			
+		}else if(transaction == "Login"){
+			cout<<"Error: User cannot login into another account while logged in"<<endl;
+			tChooser(lType,session);
 
 		}else{
 			exit(0);
@@ -68,6 +73,10 @@ void tChooser(vector<string> lType,login session){
 		}else if(transaction == "Transfer"){
 			transfer trans;
 			trans.conductTransfer(lType,session);
+		}else if(transaction == "Login"){
+			cout<<"Error: User cannot login into another account while logged in"<<endl;
+			tChooser(lType,session);
+
 		}else{
 			exit(0);
 		}
