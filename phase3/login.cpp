@@ -27,7 +27,7 @@ void login::loginType(vector<string> lType,login session){
             exit(0);
         }
     }else{
-        cout << "User must be logged in to access these features"<<endl;
+        cout << "Error: User must be logged in to access these features"<<endl;
         exit(0);
     }
     exit(0);
